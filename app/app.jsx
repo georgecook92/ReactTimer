@@ -5,6 +5,8 @@ var ReactDOM = require('react-dom');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 var Main = require('Main');
+var Timer = require('Timer');
+var Countdown = require('Countdown');
 
 
 //load foundation-sites - uses loaders also
@@ -18,6 +20,8 @@ ReactDOM.render(
   //router component
   <Router history={hashHistory}>
     <Route path="/" component={Main} >
+      <Route path="Countdown" component={Countdown} />
+      <IndexRoute component={Timer} />
     </Route>
   </Router>,
   document.getElementById('app')

@@ -2,6 +2,7 @@ var React = require('react');
 
 var Nav = require('Nav');
 
+
 //columns work with different screen sizes
 //style cascade up - so small-centred works for all sizes
 var Main = (props) => {
