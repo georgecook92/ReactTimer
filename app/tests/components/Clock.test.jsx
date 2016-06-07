@@ -11,4 +11,38 @@ describe('Clock', () => {
   it('should exist', () => {
     expect(Clock).toExist();
   });
+
+  describe('render', () => {
+    it('should render clock to output', () => {
+        var clock = TestUtils.renderIntoDocument(<Clock totalSeconds={62}/>);
+        var $el = $(ReactDOM.findDOMNode(clock));
+        //uses jquery to access the component and pull the text value out
+        var actualText = $el.find('.clock-text').text();
+
+        //assertion - checking that the text which is produced is correct
+        expect(actualText).toBe('01:02');
+    });
+  });
+
+  describe('formatSeconds', () => {
+    it('should format seconds', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock/>);
+      var seconds = 615;
+      var expected = '10:15';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+
+    it('should format seconds when min/sec are less than 10', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock/>);
+      var seconds = 61;
+      var expected = '01:01';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+
+  });
+
 });
