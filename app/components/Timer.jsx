@@ -18,7 +18,7 @@ var Timer = React.createClass({
     if (this.state.timerStatus !== prevState.timerStatus) {
       switch (this.state.timerStatus) {
         case 'started':
-          this.startTimer();
+          this.handleStartTimer();
           break;
 
         //intentionally no break here as if you stop, you also want the clear Interval
@@ -38,11 +38,10 @@ var Timer = React.createClass({
     this.timer = undefined;
   },
 
-  startTimer: function() {
+  handleStartTimer: function() {
     this.timer = setInterval( () => {
       var newCount = this.state.count + 1;
 
-      //ternary if new is >= 0 use newCount - else use 0
       this.setState({
         count: newCount
       });
@@ -57,7 +56,7 @@ var Timer = React.createClass({
     });
   },
 
-  handleStatusChange: function(newStatus) {
+  onStatusChange: function(newStatus) {
     this.setState({
       timerStatus: newStatus
     });
@@ -71,7 +70,7 @@ var Timer = React.createClass({
       <div>
         <h1 className='page-title-timer'>Timer Application</h1>
           <Clock totalSeconds={count}/>
-          <Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
+          <Controls countdownStatus={timerStatus} onStatusChange={this.onStatusChange}/>
       </div>
     );
   }
