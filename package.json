@@ -39,5 +39,12 @@
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {"ecmaVersion": 6, "ecmaFeatures": {"jsx": true}},
+    "env": { "serviceworker": true, "browser": true, "commonjs": true },
+    "rules": { "no-console": 0 }
+
   }
 }

@@ -10,6 +10,7 @@ var Countdown = require('Countdown');
 
 
 //load foundation-sites - uses loaders also
+/* global $ */
 $(document).foundation();
 
 //app.css
